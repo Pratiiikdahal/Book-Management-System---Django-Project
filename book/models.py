@@ -39,7 +39,7 @@ class Book(models.Model):
     genre=models.ForeignKey(Genre,on_delete=models.SET_NULL,null=True,blank=True)
     author=models.ManyToManyField(Author)
     edition=models.PositiveIntegerField()
-    isbn=models.CharField(max_length=255,null=True,blank=True)
+    isbn=models.CharField(max_length=255,null=True,blank=True,unique=True)
     page_number=models.PositiveIntegerField()
     description=models.TextField()
     demo_text=models.CharField(max_length=50,null=True,blank=True)
