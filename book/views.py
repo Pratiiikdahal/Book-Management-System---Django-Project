@@ -58,7 +58,44 @@ def delete_books(request,id):
     to_be_deleted=get_object_or_404(Book,id=id)
     to_be_deleted.delete()
     return redirect(request,'show-book')
+
+
+def add_publication(request):
+    form=addpublication_form()
+    if request.method=='POST':
+        form=addpublication_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('display-publication')
+    else:
+        form=addpublication_form()
+    context={
+        'form':form
+    }
+    return render(request,'publicationcreate.html',context=context)
     
+def display_publication(request):
+    all_publication=Publication.objects.all()
+    context={
+        'display_publication':all_publication,
+    }
+    return render(request,'publicationview.html',context=context)
 
+def edit_publication(request,id):
+    publication_update=Publication.objects.get(id=id)
+    
+    if request.method=='POST':
+        form=addpublication_form(request.POST,request.FILES,instance=publication_update)
+        form.save()
+        return redirect('display-publication')
+    else:
+        form=addpublication_form(instance=publication_update)
+    context={
+        'update_pub_form':form
+    }
+    return render(request,'publicationupdate.html',context=context)
 
-
+def delete_publication(request,id):
+    pub_del_obj=Publication.objects.get(id=id)
+    pub_del_obj.delete()
+    return redirect('display-publication')

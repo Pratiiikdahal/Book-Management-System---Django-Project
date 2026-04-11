@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block 'title' %}View Publication | Admin BMS {% endblock %}
+{% block 'content' %}
+<div class='container'>
+    <h1>Publications:</h1>
+    <a href="{% url 'add-publication' %}">Add Publication</a>
+    <div class='table-wrapper'>
+    {%if display_publication%}
+    <table>
+            <tr>
+                <th>Publication Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Operations</th>
+            </tr>
+            {% for publication in display_publication%}
+            <tr>
+
+                <td>{{publication.publication_name}}</td>
+                <td>{{publication.address}}</td>
+                <td>{{publication.email}}</td>
+                <td>{{publication.phone}}</td>
+                <td>{{publication.webiste}}</td>
+                <td>
+                    <a href="{% url 'edit-publication' publication.id %}">Edit</a>
+                    <a href="{% url 'delete-publication' publication.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    {% endif %}
+    </div>
+</div>
+{%endblock%}
