@@ -45,7 +45,7 @@ class Book(models.Model):
     demo_text=models.CharField(max_length=50,null=True,blank=True)
     price=models.DecimalField(max_digits=100,decimal_places=2)
     language=models.CharField(max_length=255,null=True,blank=True)
-    discount_percentage=models.DecimalField(max_digits=2,decimal_places=2)
+    discount_percentage=models.DecimalField(max_digits=100,decimal_places=2)
     isActive=models.BooleanField()
     isPublished=models.BooleanField()
     created_at=models.DateField(auto_now=True)

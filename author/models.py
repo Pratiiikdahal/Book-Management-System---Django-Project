@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Author(models.Model):
-    publication_name=models.CharField(max_length=255,verbose_name='Author Name',null=True,blank=True)
+    name=models.CharField(max_length=255,verbose_name='Author Name',default='Dummy')
+    publication_name=models.CharField(max_length=255,verbose_name='Publication Name',null=True,blank=True)
     description=models.TextField(verbose_name='Author Description',null=True,blank=True)
     address=models.CharField(max_length=255,verbose_name='Author Address',null=True,blank=True)
     nationality=models.CharField(max_length=255,verbose_name='Nationality',null=True,blank=True)
@@ -16,4 +17,4 @@ class Author(models.Model):
     modified_by=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     
     def __str__(self) -> str:
-        return self.publication_name
+        return self.name

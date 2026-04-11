@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{%block 'title' %}View Books | Admin BMS {% endblock %}
+{% block 'content' %}
+<div class='container'>
+    <h1>Books:</h1>
+    <div class='table-wrapper'>
+    {%if book_list%}
+    <table>
+            <tr>
+                <th>Book Name</th>
+                <th>Author Name</th>
+                <th>Price</th>
+                <th>ISBN</th>
+                <th>Active Status</th>
+                <th>Language</th>
+                <th>Operation</th>
+            </tr>
+            {% for book in book_list%}
+            <tr>
+
+                <td>{{book.book_name}}</td>
+                
+                {% comment %} <td>{{book.author.name}}</td> {% endcomment %}
+            <td>
+                {% for author in book.author.all %}
+                    {{ author.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    No Authors
+                {% endfor %}
+            </td>
+                <td>{{book.price}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.isActive}}</td>
+                <td>{{book.language}}</td>
+                <td>
+                    <a href="{% url 'update-books' book.id %}">Edit</a>
+                    <a href="{% url 'delete-books' book.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    {% endif %}
+    </div>
+</div>
+{%endblock%}

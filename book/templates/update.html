@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%block 'title' %}Update Book | BMS{%endblock%}
+
+{% block 'content' %}
+<div class='book-form'>
+    <div class='container'>
+        <form method='post' enctype='multipart/form-data' class='flex flex-column gap-5'>
+            {% csrf_token %}
+            {{update_form.as_div}}
+            <button type='submit'>Update Book</buttom>
+        </form>
+    </div>
+</div>
+{%endblock%}

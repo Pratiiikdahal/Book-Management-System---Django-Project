@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block 'title' %}Home|BMS{%endblock%}
+{% block 'content' %}
+    <div class="container">
+        <a href="{% url 'book-add' %}">Add book</a>
+        <h1>Hello this is the main Homepage of the Book Management System.</h1>
+        {{message}}
+        {% if display_book %}
+            {% for book in display_book %}
+                {{book.image}}
+                {{book.book_name}}
+            {%endfor%} 
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,381 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ── Page ─────────────────────────────────────────── */
+.book-form {
+    display: flex;
+    justify-content: center;
+    padding: 36px 16px;
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+.book-form .container {
+    width: 100%;
+    max-width: 940px;
+}
+
+/* ── Card ─────────────────────────────────────────── */
+.book-form form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .06);
+}
+
+/* ── Field wrappers ───────────────────────────────── */
+.book-form form > div {
+    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+/* ── Labels ───────────────────────────────────────── */
+.book-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+/* ── All inputs ───────────────────────────────────── */
+.book-form input,
+.book-form select,
+.book-form textarea {
+    width: 100%;
+    padding: 10px 13px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #111827;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.book-form input:hover,
+.book-form select:hover,
+.book-form textarea:hover {
+    border-color: #c0cfe8;
+}
+
+.book-form input:focus,
+.book-form select:focus,
+.book-form textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, .12);
+}
+
+/* ── Textarea ─────────────────────────────────────── */
+.book-form textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* ── Multi-select ─────────────────────────────────── */
+.book-form select[multiple] {
+    min-height: 108px;
+    padding: 6px;
+}
+.book-form select[multiple] option {
+    padding: 5px 7px;
+    border-radius: 4px;
+}
+
+/* ── File input ───────────────────────────────────── */
+.book-form input[type="file"] {
+    padding: 7px 10px;
+    background: #f9fafb;
+    color: #6b7280;
+    cursor: pointer;
+    border-style: dashed;
+    appearance: auto;
+    -webkit-appearance: auto;
+}
+.book-form input[type="file"]:hover {
+    background: #f3f7fe;
+    border-color: #93bff0;
+}
+.book-form input[type="file"]::file-selector-button {
+    padding: 4px 12px;
+    margin-right: 12px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    transition: background .15s;
+}
+.book-form input[type="file"]::file-selector-button:hover {
+    background: #f3f4f6;
+}
+
+/* ── Checkbox (isActive / isPublished) ────────────── */
+.book-form form > div:has(input[type="checkbox"]) {
+    flex: 1 1 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9fafb;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.book-form form > div:has(input[type="checkbox"]) label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    text-transform: none;
+    letter-spacing: 0;
+    cursor: pointer;
+    order: 1;
+    flex: 1;
+}
+
+.book-form form > div:has(input[type="checkbox"]) input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    cursor: pointer;
+    accent-color: #4a90e2;
+    padding: 0;
+    order: 2;
+    appearance: auto;
+    -webkit-appearance: checkbox;
+}
+
+/* ── Full-width fields ────────────────────────────── */
+.book-form form > div:has(textarea),
+.book-form form > div:has(input[type="file"]),
+.book-form form > div:has(select[multiple]) {
+    flex: 1 1 100%;
+}
+
+/* ── Submit button wrapper ────────────────────────── */
+.book-form form > div:last-child {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #f0f2f5;
+    padding-top: 20px;
+    margin-top: 4px;
+}
+
+/* ── Submit button ────────────────────────────────── */
+.book-form button[type="submit"] {
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+}
+.book-form button[type="submit"]:hover  { background: #357bd8; }
+.book-form button[type="submit"]:active { transform: scale(.98); }
+
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+    margin-top: 24px;
+    background: #fff;
+}
+
+/* ── Table ────────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 700px;
+}
+
+/* ── Header ───────────────────────────────────────── */
+table tr:first-child {
+    background: #f1f5fb;
+}
+
+table th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #6b7280;
+    white-space: nowrap;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+table th:first-child { border-radius: 12px 0 0 0; }
+table th:last-child  { border-radius: 0 12px 0 0; }
+
+/* ── Body rows ────────────────────────────────────── */
+table td {
+    padding: 14px 18px;
+    color: #374151;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr {
+    transition: background .12s;
+}
+
+table tbody tr:hover {
+    background: #f8faff;
+}
+
+/* ── Alternating row tint ─────────────────────────── */
+table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+table tbody tr:nth-child(even):hover {
+    background: #f0f5ff;
+}
+
+/* ── Book name — slightly bolder ──────────────────── */
+table td:first-child {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ── Price cell ───────────────────────────────────── */
+table td:nth-child(3) {
+    font-weight: 600;
+    color: #1d4ed8;
+    font-variant-numeric: tabular-nums;
+}
+table td:nth-child(3)::before {
+    content: '$';
+    font-size: 11px;
+    font-weight: 400;
+    color: #93b4e8;
+    margin-right: 1px;
+}
+
+/* ── ISBN — monospace feel ────────────────────────── */
+table td:nth-child(4) {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #6b7280;
+    letter-spacing: .03em;
+}
+
+/* ── Active status cell ───────────────────────────── */
+table td:nth-child(5) {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #15803d;
+}
+
+/* ── Action links ─────────────────────────────────── */
+table td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+table td:last-child a {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background .15s, transform .1s, box-shadow .15s;
+    white-space: nowrap;
+}
+
+table td:last-child a:active {
+    transform: scale(.96);
+}
+
+/* Edit */
+table td:last-child a:first-child {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+table td:last-child a:first-child:hover {
+    background: #dbeafe;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, .18);
+}
+
+/* Delete */
+table td:last-child a:last-child {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+table td:last-child a:last-child:hover {
+    background: #fee2e2;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, .15);
+}
+
+/* ── No books fallback ────────────────────────────── */
+.container > p {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+    padding: 60px 0;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin-top: 24px;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 12px;
+    }
+
+    table th,
+    table td {
+        padding: 11px 12px;
+    }
+
+    table td:last-child {
+        gap: 6px;
+    }
+
+    table td:last-child a {
+        padding: 5px 10px;
+    }
+}
+
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 640px) {
+    .book-form form > div {
+        flex: 1 1 100%;
+    }
+}
