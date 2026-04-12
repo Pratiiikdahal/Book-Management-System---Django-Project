@@ -1,37 +1,77 @@
 {% extends 'base.html' %}
 
-{%block 'title' %}View Publication | Admin BMS {% endblock %}
-{% block 'content' %}
-<div class='container'>
-    <h1>Publications:</h1>
-    <a href="{% url 'add-publication' %}">Add Publication</a>
-    <div class='table-wrapper'>
-    {%if display_publication%}
-    <table>
-            <tr>
-                <th>Publication Name</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Website</th>
-                <th>Operations</th>
-            </tr>
-            {% for publication in display_publication%}
-            <tr>
+{% block 'title' %}View Publication | Admin BMS{% endblock %}
 
-                <td>{{publication.publication_name}}</td>
-                <td>{{publication.address}}</td>
-                <td>{{publication.email}}</td>
-                <td>{{publication.phone}}</td>
-                <td>{{publication.webiste}}</td>
-                <td>
-                    <a href="{% url 'edit-publication' publication.id %}">Edit</a>
-                    <a href="{% url 'delete-publication' publication.id %}">Delete</a>
-                </td>
-            </tr>
+{% block 'content' %}
+
+<div class="dashboard py-4">
+   <div class='container-fluid'>
+    <div class="dashboard-header">
+        <h1>Publications</h1>
+        <a class="btn-add" href="{% url 'add-publication' %}">+ Add Publication</a>
+    </div>
+
+    <div class="controls">
+
+        <input type="text" id="search" placeholder="Search name, email, phone...">
+
+        <button>Search</button>
+
+        <select id="filter-status" onchange="filterTable()">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table id="publicationTable">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for publication in display_publication %}
+
+                <tr data-status="{% if publication.isActive %}active{% else %}inactive{% endif %}">
+
+                    <td>{{ publication.publication_name }}</td>
+                    <td>{{ publication.address }}</td>
+                    <td>{{ publication.email }}</td>
+                    <td>{{ publication.phone }}</td>
+                    <td>{{ publication.webiste }}</td>
+
+                    <td class="actions">
+                        <a href="{% url 'edit-publication' publication.id %}">Edit</a>
+                        <a href="{% url 'delete-publication' publication.id %}">Delete</a>
+                    </td>
+
+                </tr>
+
+            {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align:center; padding:20px;">
+                        No Publications Found
+                    </td>
+                </tr>
             {% endfor %}
-    </table>
-    {% endif %}
+
+            </tbody>
+
+        </table>
+
     </div>
 </div>
-{%endblock%}
+</div>
+{% endblock %}

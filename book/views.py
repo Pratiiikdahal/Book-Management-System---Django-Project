@@ -75,7 +75,7 @@ def add_publication(request):
     return render(request,'publicationcreate.html',context=context)
     
 def display_publication(request):
-    all_publication=Publication.objects.all()
+    all_publication=Publication.objects.filter(isActive=True)
     context={
         'display_publication':all_publication,
     }

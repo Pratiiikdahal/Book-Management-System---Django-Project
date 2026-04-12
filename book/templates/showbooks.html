@@ -2,8 +2,25 @@
 
 {%block 'title' %}View Books | Admin BMS {% endblock %}
 {% block 'content' %}
-<div class='container'>
-    <h1>Books:</h1>
+<div class='container-fluid'>
+    <div class="dashboard-header py-4">
+        <h1>Books</h1>
+        <a class="btn-add" href="{% url 'book-add' %}">+ Add Books</a>
+    </div>
+
+    <div class="controls">
+
+        <input type="text" id="search" placeholder="Search books...">
+
+        <button>Search</button>
+
+        <select id="filter-status">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+
+    </div>
     <div class='table-wrapper'>
     {%if book_list%}
     <table>
