@@ -2,11 +2,10 @@ from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from .forms import *
 # Create your views here.
-
 def add_book(request):
     form=addbook_form()
     if request.method=='POST':
-        form=addbook_form(request.POST)
+        form=addbook_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
     else:

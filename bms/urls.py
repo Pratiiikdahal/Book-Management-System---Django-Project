@@ -25,6 +25,7 @@ urlpatterns = [
     path('',views.display_book,name='main-home'),
     path('users/',include('user.urls')),
     path('book/',include('book.urls')),
+    path('author/',include('author.urls'),)
 ]
 
 if settings.DEBUG:

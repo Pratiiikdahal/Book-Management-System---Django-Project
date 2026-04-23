@@ -1,10 +1,10 @@
 <nav class="navbar">
     <div class="container-fluid">
 
-        <a href="#" class="logo">BMS</a>
+        <a href="{% url 'main-home' %}" class="logo">BMS</a>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'display-author' %}">Author</a></li>
             <li><a href="{% url 'display-publication' %}">Publications</a></li>
             <li><a href="{% url 'show-book' %}">Books</a></li>
         </ul>

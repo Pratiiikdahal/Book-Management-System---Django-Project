@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}View Authors | Admin BMS{% endblock %}
+
+{% block 'content' %}
+
+<div class="dashboard py-4">
+   <div class='container-fluid'>
+
+    <div class="dashboard-header">
+        <h1>Authors</h1>
+        <a class="btn-add" href="{% url 'add-author' %}">Add Author + </a>
+    </div>
+
+    <div class="controls">
+        <input type="text" placeholder="Search author...">
+        <button>Search</button>
+
+        <select>
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th>Publication</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Nationality</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for author in authors %}
+
+                <tr data-status="{% if author.isActive %}active{% else %}inactive{% endif %}">
+
+                    <td class="author-cell">
+                        <div class="author-info">
+                            <div class="avatar">
+                                {{ author.name|slice:":1" }}
+                            </div>
+
+                            <div>
+                                <strong>{{ author.name }}</strong><br>
+                                <small>{{ author.address }}</small>
+                            </div>
+
+                        </div>
+                    </td>
+
+                    <td>{{ author.publication_name }}</td>
+                    <td>{{ author.email }}</td>
+                    <td>{{ author.phone }}</td>
+                    <td>{{ author.nationality }}</td>
+
+                    <td class="actions">
+                        <a href="#">Update</a>
+                        <a href="#">Delete</a>
+                    </td>
+
+                </tr>
+
+            {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align:center; padding:20px;">
+                        No Authors Found
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
