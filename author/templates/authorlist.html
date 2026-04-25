@@ -64,8 +64,8 @@
                     <td>{{ author.nationality }}</td>
 
                     <td class="actions">
-                        <a href="#">Update</a>
-                        <a href="#">Delete</a>
+                        <a href="{% url 'update-author' author.id %}">Update</a>
+                        <a href="{% url 'delete-author' author.id %}">Delete</a>
                     </td>
 
                 </tr>

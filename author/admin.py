@@ -6,4 +6,5 @@ from .models import *
 class authorAdmin(admin.ModelAdmin):
     list_display=['publication_name','description','address','nationality','email',
                   'phone','webiste','isActive','created_at','modified_by']
+    list_per_page=15
     
