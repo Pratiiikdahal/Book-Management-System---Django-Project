@@ -1,7 +1,11 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import *
+
 # Create your views here.
+
+@login_required
 def add_book(request):
     form=addbook_form()
     if request.method=='POST':
@@ -14,7 +18,7 @@ def add_book(request):
         'form':form
     }
     return render(request,'bookcreate.html',context=context)
-
+@login_required
 def show_book(request):
     # show_book=Book.objects.all()
     show_book = Book.objects.prefetch_related('author') # yes, it does run the objects.all() query and also fetches the author too , specially used in the many to many filed.
@@ -37,7 +41,7 @@ def display_book(request):
     }
     return render(request,'home.html',context=context)
 
-
+@login_required
 def update_books(request,id):
     book=Book.objects.get(id=id)
     
@@ -52,13 +56,13 @@ def update_books(request,id):
     }
     return render(request,'update.html',context=context)
 
-
+@login_required
 def delete_books(request,id):
     to_be_deleted=get_object_or_404(Book,id=id)
     to_be_deleted.delete()
     return redirect(request,'show-book')
 
-
+@login_required
 def add_publication(request):
     form=addpublication_form()
     if request.method=='POST':
@@ -72,7 +76,8 @@ def add_publication(request):
         'form':form
     }
     return render(request,'publicationcreate.html',context=context)
-    
+
+@login_required
 def display_publication(request):
     all_publication=Publication.objects.filter(isActive=True)
     context={
@@ -80,6 +85,7 @@ def display_publication(request):
     }
     return render(request,'publicationview.html',context=context)
 
+@login_required
 def edit_publication(request,id):
     publication_update=Publication.objects.get(id=id)
     
@@ -94,6 +100,7 @@ def edit_publication(request,id):
     }
     return render(request,'publicationupdate.html',context=context)
 
+@login_required
 def delete_publication(request,id):
     pub_del_obj=Publication.objects.get(id=id)
     pub_del_obj.delete()

@@ -23,9 +23,10 @@ from book import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.display_book,name='main-home'),
-    path('users/',include('user.urls')),
     path('book/',include('book.urls')),
-    path('author/',include('author.urls'),)
+    path('author/',include('author.urls')),
+    path('accounts/',include('accounts.urls'))
+    
 ]
 
 if settings.DEBUG:
